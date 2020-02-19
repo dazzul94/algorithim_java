@@ -1,6 +1,6 @@
 package array_test;
 
-public class array01 {
+public class Array01 {
 
 	public static void main(String[] args) {
 	    char[] country = new char[3]; 
