@@ -22,8 +22,7 @@ public class ArrayQueue {
 
     // 큐 배열 생성
     public ArrayQueue(int maxSize){
-        
-        this.front = 0;
+        this.front = -1;
         this.rear = -1;
         this.maxSize = maxSize;
         this.queueArray = new Object[maxSize];  // Object 배열
@@ -31,7 +30,7 @@ public class ArrayQueue {
 	
     // 큐가 비어있는지 확인
     public boolean isEmpty(){
-        return (front == rear + 1);
+        return (front == rear);
     }
 	
     // 큐가 꽉 찼는지 확인
@@ -45,18 +44,21 @@ public class ArrayQueue {
         if(isFull()) {
         	System.out.println("큐가 꽉 차서 Enqueue할 수 없습니다.");
         	return;
+        } else {
+        	queueArray[++rear] = item;
+        	System.out.println("큐에 " + item + "를 넣었습니다!");
         }
-        queueArray[++rear] = item;
-        System.out.println("큐에 " + item + "를 넣었습니다!");
 	}
 	
 	public Object dequeue() {
 		// front에서 발생.
 		// front가 가리키고 있는 데이터를 꺼낸 후 front 값을 하나 증가.
 		// front 값이 rear를 추월하게 되면 더이상 제거할 데이터가 없는 상태 즉, 자료가 하나도 없는 빈 큐임을 의미.
-        Object item = peek();
-        front++;
-        return item;
+		if (isEmpty()) { 
+			return null;
+		} else {
+			return queueArray[++front];
+		}
 	}
 	
 	public Object peek() {
@@ -65,8 +67,9 @@ public class ArrayQueue {
         if(isEmpty()) {
         	System.out.println("큐가 비어있습니다.");
         	return null;
+        } else {
+        	return queueArray[front + 1];
         }
-        return queueArray[front];
 	}
 	// rear값 반환
 	public int returnRear() {
@@ -76,6 +79,11 @@ public class ArrayQueue {
 	// front값 반환
 	public int returnFront() {
 		return front;
+	}
+	
+	// maxsize값 반환
+	public int returnMaxsize() {
+		return maxSize;
 	}
 	// 배열을 이용하여 큐를 구현할 때의 단점
 	// 1. 그 크기가 고정되었다는 점 

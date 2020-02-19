@@ -17,8 +17,8 @@ public class View {
 			System.out.println("3. 데이터 확인(Peek)");
 			System.out.println("4. 큐가 꽉찼는지 확인");
 			System.out.println("5. 큐가 비었는지 확인");
-			System.out.println("6. 큐의 front 값은?");
-			System.out.println("7. 큐의 rear 값은? ");
+			System.out.println("6. 큐의 front, rear 값은?");
+			System.out.println("7. 큐의 maxsize 값은? ");
 			System.out.println("8. 종료 ");
 			
 			int choice = sc.nextInt();
@@ -50,10 +50,10 @@ public class View {
 				System.out.println(arrayQueue.isEmpty());
 				break;
 			case 6 :
-				System.out.println("큐의 front 값은 " + arrayQueue.returnFront() + "입니다");
+				System.out.println("큐의 front, rear 값은 " + arrayQueue.returnFront() + ", " + arrayQueue.returnRear() + "입니다");
 				break;
 			case 7 :
-				System.out.println("큐의 rear 값은 " + arrayQueue.returnRear() + "입니다");
+				System.out.println("큐의 최대 사이즈 값은 " + arrayQueue.returnMaxsize() + "입니다.");
 				break;
 			case 8 : 
 				System.out.println("Bye-");
